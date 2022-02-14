@@ -70,7 +70,15 @@ app.post(
     failureRedirect: "/login/error",
   }),
   function (req, res) {
-    res.send({ success: true, id: req.user, message: "Login success" });
+    const { user = {} } = req;
+    const { color, email, username } = user || {};
+    res.send({
+      success: true,
+      color,
+      email,
+      username,
+      message: "Login success",
+    });
   }
 );
 app.get("/login/error", (req, res) => {
@@ -82,7 +90,15 @@ app.get("/error", (req, res) => {
 
 app.get("/login_auth", authCheck, (req, res) => {
   if (req.isAuthenticated()) {
-    res.send({ status: true, message: "user autheticated" });
+    const { user = {} } = req;
+    const { color, email, username } = user || {};
+    res.send({
+      status: true,
+      color,
+      email,
+      username,
+      message: "user autheticated",
+    });
   } else {
     res.status(401).send({ status: false, message: "unAuthorised" });
   }

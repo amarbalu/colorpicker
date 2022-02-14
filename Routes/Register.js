@@ -35,7 +35,21 @@ app.post("/onRegister", async (req, res) => {
     message: "User saved successfully.",
   });
 });
+app.post("/colorUpdate", async function (req, res) {
+  const user = await User.findOne({ email: req.fields.email });
+  if (user) {
+    await User.updateOne(
+      { email: req.fields.email },
+      {
+        $set: {
+          color: req.fields.color,
+        },
+      }
+    );
 
+    res.status(200).send({ success: true, message: "Save Updated" });
+  }
+});
 app.post("/deleteRegister", async (req, res) => {
   let register = await Register.findOne({ email: req.fields.email });
   if (register) {
