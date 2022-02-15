@@ -53,7 +53,7 @@ app.use(function (err, req, res, next) {
   res.status(403);
   res.send({ err: true, message: "Invalid Csrf Token" });
 });
-app.use(express.static("frontendChange/build"));
+app.use(express.static("client/build"));
 const authCheck = (req, res, next) => {
   if (req.user && req.user.id) {
     next();
@@ -111,6 +111,6 @@ app.get("/logout", (req, res) => {
   res.send({ success: true, message: "logged out successfully" });
 });
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, `frontendChange`, `build`, `index.html`));
+  res.sendFile(path.join(__dirname, `client`, `build`, `index.html`));
 });
 app.listen(port);
