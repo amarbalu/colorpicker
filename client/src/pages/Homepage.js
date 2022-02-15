@@ -44,10 +44,10 @@ const Homepage = (props) => {
           }}
         >
           <Col
-            xs={{ span: 21, offset: 3 }}
-            md={{ span: 8, offset: 4 }}
-            lg={{ span: 8, offset: 4 }}
-            xl={{ span: 12, offset: 4 }}
+          // xs={{ span: 21, offset: 3 }}
+          // md={{ span: 8, offset: 4 }}
+          // lg={{ span: 8, offset: 4 }}
+          // xl={{ span: 12, offset: 4 }}
           >
             <h1 style={{ color: "#fafafa", fontFamily: "sans-serif" }}>
               Welcome {props.username}.
@@ -71,7 +71,9 @@ const Homepage = (props) => {
             </h1>
           </Col>
           {props.colorPicker && (
-            <Col md={{ span: 12 }} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Col
+            // md={{ span: 12 }} lg={{ span: 12 }} xl={{ span: 8 }}
+            >
               <HexColorPicker color={color} onChange={changeColor} />
             </Col>
           )}

@@ -29,8 +29,9 @@ const loginReducer = (state = initialState, action) => {
         return {
           ...state,
           username: "",
-          color: "",
+          color: "#090909",
           email: "",
+          colorPicker: false,
         };
       }
     case "LOADER_CARD":
